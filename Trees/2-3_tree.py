@@ -4,14 +4,14 @@
 class Node:
 	def __init__(self, data, par = None):
 		#print ("Node __init__: " + str(data))
-		self.data = list([data])
+		self.data = [data]
 		self.parent = par
-		self.child = list()
+		self.child = []
 		
 	def __str__(self):
 		if self.parent:
-			return str(self.parent.data) + ' : ' + str(self.data)
-		return 'Root : ' + str(self.data)
+			return f'{str(self.parent.data)} : {str(self.data)}'
+		return f'Root : {str(self.data)}'
 	
 	def __lt__(self, node):
 		return self.data[0] < node.data[0]
@@ -61,11 +61,10 @@ class Node:
 			self.child[3].parent = right_child
 			left_child.child = [self.child[0], self.child[1]]
 			right_child.child = [self.child[2], self.child[3]]
-					
-		self.child = [left_child]
-		self.child.append(right_child)
+
+		self.child = [left_child, right_child]
 		self.data = [self.data[1]]
-		
+
 		# now have new sub-tree, self. need to add self to its parent node
 		if self.parent:
 			if self in self.parent.child:
@@ -104,7 +103,7 @@ class Tree:
 		self.root = None
 		
 	def insert(self, item):
-		print("Tree insert: " + str(item))
+		print(f"Tree insert: {str(item)}")
 		if self.root is None:
 			self.root = Node(item)
 		else:
@@ -121,9 +120,9 @@ class Tree:
 		
 	def printTop2Tiers(self):
 		print ('----Top 2 Tiers----')
-		print (str(self.root.data))
+		print(self.root.data)
 		for child in self.root.child:
-			print (str(child.data), end=' ')
+			print(child.data, end=' ')
 		print(' ')
 		
 	def preorder(self):

@@ -8,7 +8,7 @@ class Shape:
 		return self.color
 		
 	def __str__(self):
-		return self.get_color() + ' Shape'
+		return f'{self.get_color()} Shape'
 		
 class Rectangle(Shape):
 	def __init__(self, color, length, width):
@@ -23,7 +23,7 @@ class Rectangle(Shape):
 		return 2 * (self.length + self.width)
 		
 	def __str__(self):
-		return self.get_color() + ' ' + str(self.length) + 'x' + str(self.width) + ' ' + type(self).__name__
+		return f'{self.get_color()} {str(self.length)}x{str(self.width)} {type(self).__name__}'
 
 from math import pi		
 class Circle(Shape):

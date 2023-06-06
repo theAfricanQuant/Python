@@ -16,8 +16,8 @@ class Node(object):
 	def set_data (self, d):
 		self.data = d
 		
-	def to_string (self):
-		return "Node value: " + str(self.data)
+	def to_string(self):
+		return f"Node value: {str(self.data)}"
 
 class CircularLinkedList (object):
 
@@ -88,16 +88,16 @@ def main():
 
 	cur = myList.root
 	print (cur.to_string())
-	for i in range(8):
+	for _ in range(8):
 		cur = cur.get_next();
 		print (cur.to_string())
 
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	myList.print_list()
 	myList.remove(8)
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	print("Remove 15", myList.remove(15))
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	myList.remove(5)	# delete root node
 	myList.print_list()
 	

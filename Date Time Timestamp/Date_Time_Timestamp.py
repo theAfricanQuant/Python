@@ -12,6 +12,7 @@ calendar # for calendars
 dateutil # extended datetime functionality, esp string parsing and delta calculation
 ##############################################################################"""
 
+
 # Today's Date
 # ---------------------------
 # Use datetime.date.today()
@@ -31,7 +32,7 @@ print(d1.weekday())
 from datetime import date
 d1 = date.fromisoformat('2011-11-23')
 print(d1)
-print(str(d1))
+print(d1)
 print(d1.isoformat())
 d1
 
@@ -81,7 +82,7 @@ t3 = datetime.now()
 print(t3.time())
 print(t3.date())
 print(t3.hour, t3.minute)
-print(str(t3.month) + '-' + str(t3.day) + '-' + str(t3.year))
+print(f'{t3.month}-{t3.day}-{t3.year}')
 
 # Use datetime.strftime() to get names of months and weekdays.
 
@@ -103,7 +104,7 @@ print(td.total_seconds())
 print(td * 3)
 
 from datetime import datetime
-today = datetime.today().date()
+today = datetime.now().date()
 my_event = date(2021, 11, 6)
 days_to_event = abs(my_event - today)
 print(days_to_event.days, 'days to event.')

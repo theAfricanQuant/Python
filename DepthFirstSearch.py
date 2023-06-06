@@ -1,8 +1,8 @@
 class Vertex:
 	def __init__(self, n):
 		self.name = n
-		self.neighbors = list()
-		
+		self.neighbors = []
+
 		self.discovery = 0
 		self.finish = 0
 		self.color = 'black'
@@ -24,15 +24,14 @@ class Graph:
 			return False
 	
 	def add_edge(self, u, v):
-		if u in self.vertices and v in self.vertices:
-			for key, value in self.vertices.items():
-				if key == u:
-					value.add_neighbor(v)
-				if key == v:
-					value.add_neighbor(u)
-			return True
-		else:
+		if u not in self.vertices or v not in self.vertices:
 			return False
+		for key, value in self.vertices.items():
+			if key == u:
+				value.add_neighbor(v)
+			if key == v:
+				value.add_neighbor(u)
+		return True
 			
 	def print_graph(self):
 		for key in sorted(list(self.vertices.keys())):

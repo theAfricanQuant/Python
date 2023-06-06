@@ -16,13 +16,11 @@ class Node(object):
 	def set_data (self, d):
 		self.data = d
 		
-	def has_next (self):
-		if self.get_next() is None:
-			return False
-		return True
+	def has_next(self):
+		return self.get_next() is not None
 		
-	def to_string (self):
-		return "Node value: " + str(self.data)
+	def to_string(self):
+		return f"Node value: {str(self.data)}"
 		
 class LinkedList (object):
 
@@ -60,12 +58,12 @@ class LinkedList (object):
 				this_node = this_node.get_next()
 		return False  # data not found
 
-	def find (self, d):
+	def find(self, d):
 		this_node = self.root
 		while this_node is not None:
 			if this_node.get_data() == d:
 				return d
-			elif this_node.get_next() == None:
+			elif this_node.get_next() is None:
 				return False
 			else:
 				this_node = this_node.get_next()
@@ -80,20 +78,19 @@ class LinkedList (object):
 			this_node = this_node.get_next()
 			print (this_node.to_string())
 			
-	def sort (self):
-		if self.size > 1:
-			newlist = [];
-			current = self.root;
-			newlist.append(self.root);
-			while current.has_next():
-				current = current.get_next();
-				newlist.append(current);
-			newlist = sorted(newlist, key = lambda node: node.get_data(), reverse = True);
-			newll = LinkedList();
-			for node in newlist:
-				newll.add_node(node);
-			return newll;
-		return self;
+	def sort(self):
+		if self.size <= 1:
+			return self;
+		current = self.root;
+		newlist = [self.root]
+		while current.has_next():
+			current = current.get_next();
+			newlist.append(current);
+		newlist = sorted(newlist, key = lambda node: node.get_data(), reverse = True);
+		newll = LinkedList();
+		for node in newlist:
+			newll.add_node(node);
+		return newll;
 		
 def main():
 	myList = LinkedList()
@@ -102,14 +99,14 @@ def main():
 	myList.add(3)
 	myList.add(8)
 	myList.add(9)
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	myList.print_list()
 	myList = myList.sort()
 	myList.print_list()
 	myList.remove(8)
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	print("Remove 15", myList.remove(15))
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	print("Find 25", myList.find(25))
 	myList.print_list()
 	

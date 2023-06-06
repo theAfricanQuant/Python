@@ -11,4 +11,4 @@ def gcf (num1, num2):
 			
 num1 = 18
 num2 = 204
-print (str(gcf(num1, num2)))
+print(gcf(num1, num2))

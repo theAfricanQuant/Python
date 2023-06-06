@@ -6,25 +6,23 @@ class HashMap:
                 self.map = [None] * self.size
 		
         def _get_hash(self, key):
-                hash = 0
-                for char in str(key):
-                        hash += ord(char)
+                hash = sum(ord(char) for char in str(key))
                 return hash % self.size
 		
         def add(self, key, value):
                 key_hash = self._get_hash(key)
                 key_value = [key, value]
-		
+
                 if self.map[key_hash] is None:
-                        self.map[key_hash] = list([key_value])
-                        return True
+                        self.map[key_hash] = [key_value]
                 else:
                         for pair in self.map[key_hash]:
                                 if pair[0] == key:
                                         pair[1] = value
                                         return True
                         self.map[key_hash].append(key_value)
-                        return True
+
+                return True
 			
         def get(self, key):
                 key_hash = self._get_hash(key)
@@ -46,17 +44,13 @@ class HashMap:
                 return False
 	
         def keys(self):
-                arr = []
-                for i in range(0, len(self.map)):
-                        if self.map[i]:
-                                arr.append(self.map[i][0])
-                return arr
+                return [self.map[i][0] for i in range(0, len(self.map)) if self.map[i]]
 			
         def print(self):
                 print('---PHONEBOOK----')
                 for item in self.map:
                         if item is not None:
-                                print(str(item))
+                                print(item)
 			
 h = HashMap()
 h.add('Bob', '567-8888')

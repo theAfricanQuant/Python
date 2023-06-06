@@ -29,7 +29,7 @@ class Graph:
 			
 	def print_graph(self):
 		for v, i in sorted(self.edge_indices.items()):
-			print(v + ' ', end='')
+			print(f'{v} ', end='')
 			for j in range(len(self.edges)):
 				print(self.edges[i][j], end='')
 			print(' ')    

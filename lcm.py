@@ -18,7 +18,7 @@ def lcm3(nums):
 		if x % nums[0] == 0 and x % nums[1] == 0:
 			return x
 
-print(str(lcm(7, 12)))
+print(lcm(7, 12))
 
 nums = [3, 2, 16]
-print(str(lcm3(nums)))
+print(lcm3(nums))

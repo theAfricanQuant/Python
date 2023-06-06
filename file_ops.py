@@ -14,7 +14,7 @@ with open(infile) as f1:
 		print (line[:-1])
 
 print ("\n*******************")
-		
+
 # print makes only (first word of each line)
 with open(infile) as f1:
 	for line in f1:
@@ -22,7 +22,7 @@ with open(infile) as f1:
 		print(row[0])
 
 print ("\n*******************")
-		
+
 # print each line as a formatted list
 with open(infile) as f1:
 	for line in f1:
@@ -32,15 +32,15 @@ with open(infile) as f1:
 			print(row[i])
 
 print ("\n*******************")
-			
+
 # add each line to a list
-cars = list()
+cars = []
 with open(infile) as f1:
 	for line in f1:
 		row = line.split(",")
 		cars.append(row)
 	print(cars[0][0])
-	
+
 # write Makes only to outputFile
 with open(outfile, 'a') as f2:
 	for car in cars:

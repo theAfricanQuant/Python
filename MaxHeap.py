@@ -15,10 +15,7 @@ class MaxHeap:
 		self.__floatUp(len(self.heap) - 1)
 
 	def peek(self):
-		if self.heap[1]:
-			return self.heap[1]
-		else:
-			return False
+		return self.heap[1] if self.heap[1] else False
 			
 	def pop(self):
 		if len(self.heap) > 2:
@@ -56,5 +53,5 @@ class MaxHeap:
 
 m = MaxHeap([95, 3, 21])
 m.push(10)
-print(str(m.heap[0:len(m.heap)]))
-print(str(m.pop()))
+print(m.heap[:])
+print(m.pop())

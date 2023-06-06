@@ -30,5 +30,5 @@ def convert(fromNum, fromBase, toBase):
 
 # print (str(binToDec(101011)))
 # print (str(decToBin(128)))
-print (str(convert(127, 10, 8)))	# converts 127 in  base 10 to base 8
-print (str(convert(101001, 2, 2)))	
+print(convert(127, 10, 8))
+print(convert(101001, 2, 2))	

@@ -6,18 +6,18 @@ try:
 			# print(line)
 			items = line.split(',')
 			total = 0
-			
+
 			# Inner try bock catches integer conversion errors.
 			try:
 				for item in items:
 					num = int(item)
 					total += num
-				print('Total = ' + str(total))
+				print(f'Total = {str(total)}')
 			except:
 				print('Error converting to integer. ', items)
 except:
-	print('Error opening file. ' + filename)
-	
+	print(f'Error opening file. {filename}')
+
 finally:
 	print('This is our optional finally block. Code here will execute no matter what.')
 	

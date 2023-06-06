@@ -23,13 +23,11 @@ class Node(object):
 	def set_data (self, d):
 		self.data = d
 		
-	def to_string (self):
-		return "Node value: " + str(self.data)
+	def to_string(self):
+		return f"Node value: {str(self.data)}"
 		
-	def has_next (self):
-		if self.get_next() is None:
-			return False
-		return True
+	def has_next(self):
+		return self.get_next() is not None
 
 class DoublyLinkedList (object):
 
@@ -51,20 +49,19 @@ class DoublyLinkedList (object):
 			self.root = new_node
 		self.size += 1
 
-	def remove (self, d):
+	def remove(self, d):
 		this_node = self.root
 		while this_node is not None:
 			if this_node.get_data() == d:
-				if this_node.get_prev() is not None:
-					if this_node.has_next():	# delete a middle node
-						this_node.get_prev().set_next(this_node.get_next())
-						this_node.get_next().set_prev(this_node.get_prev())
-					else:	# delete last node
-						this_node.get_prev().set_next(None)
-						self.last = this_node.get_prev()
-				else: # delete root node
+				if this_node.get_prev() is None: # delete root node
 					self.root = this_node.get_next()
 					this_node.get_next().set_prev(self.root)
+				elif this_node.has_next():	# delete a middle node
+					this_node.get_prev().set_next(this_node.get_next())
+					this_node.get_next().set_prev(this_node.get_prev())
+				else:	# delete last node
+					this_node.get_prev().set_next(None)
+					self.last = this_node.get_prev()
 				self.size -= 1
 				return True     # data removed
 			else:
@@ -98,16 +95,16 @@ def main():
 	myList.add(3)
 	myList.add(8)
 	myList.add(9)
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	myList.print_list()
 	myList.remove(8)
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	print("Remove 15", myList.remove(15))
 	myList.add(21)
 	myList.add(22)
 	myList.remove(5)
 	myList.print_list()
-	print("size="+str(myList.get_size()))
+	print(f"size={str(myList.get_size())}")
 	print(myList.last.get_prev().to_string())
 
 main()

@@ -9,10 +9,8 @@ def __getDecDigit(digit):
 			
 def hexToDec(hexNum):
 	decNum = 0
-	power = 0
-	for digit in range(len(hexNum), 0, -1):
+	for power, digit in enumerate(range(len(hexNum), 0, -1)):
 		decNum = decNum + 16 ** power * __getDecDigit(hexNum[digit-1])
-		power += 1
-	print(str(decNum))
+	print(decNum)
 	
 hexToDec("A5")

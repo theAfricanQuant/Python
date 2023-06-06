@@ -6,4 +6,4 @@ class Shape:
 		return self.color
 		
 	def __str__(self):
-		return self.get_color() + ' Shape'
+		return f'{self.get_color()} Shape'

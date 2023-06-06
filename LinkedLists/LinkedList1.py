@@ -16,13 +16,11 @@ class Node(object):
 	def set_data (self, d):
 		self.data = d
 		
-	def to_string (self):
-		return "Node value: " + str(self.data);
+	def to_string(self):
+		return f"Node value: {str(self.data)}";
 		
-	def has_next (self):
-		if self.get_next() is None:
-			return False;
-		return True;
+	def has_next(self):
+		return self.get_next() is not None
 
 	def compare_to (self, y):
 		if self.to_string() < y.to_string():
@@ -87,20 +85,19 @@ class LinkedList (object):
 			current = current.get_next();
 			print (current.to_string());
 			
-	def sort (self):
-		if self.size > 1:
-			newlist = [];
-			current = self.root;
-			newlist.append(self.root);
-			while current.has_next():
-				current = current.get_next();
-				newlist.append(current);
-			newlist = sorted(newlist, key = lambda node: node.get_data(), reverse = True);
-			newll = LinkedList();
-			for node in newlist:
-				newll.add_node(node);
-			return newll;
-		return self;
+	def sort(self):
+		if self.size <= 1:
+			return self;
+		current = self.root;
+		newlist = [self.root]
+		while current.has_next():
+			current = current.get_next();
+			newlist.append(current);
+		newlist = sorted(newlist, key = lambda node: node.get_data(), reverse = True);
+		newll = LinkedList();
+		for node in newlist:
+			newll.add_node(node);
+		return newll;
 
 myList = LinkedList()
 myList.add(5)
@@ -108,11 +105,11 @@ myList.add(9)
 myList.add(3)
 myList.add(8)
 myList.add(9)
-print("size="+str(myList.get_size()))
+print(f"size={str(myList.get_size())}")
 myList.print_list();
 myList = myList.sort();
 myList.print_list();
 myList.remove(8)
-print("size="+str(myList.get_size()))
+print(f"size={str(myList.get_size())}")
 print(myList.remove(12))
-print("size="+str(myList.get_size()))
+print(f"size={str(myList.get_size())}")
